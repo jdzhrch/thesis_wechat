@@ -1,0 +1,11 @@
+<!--miniprogram/pages/news/news.wxml-->
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+  <view wx:for="{{recommends}}" wx:key="unique" style="display: block;">
+    <view class="card">
+      <view bindtap="onItemClick">
+        <text class="title">{{item.name}}</text>
+        <view class="title">{{item.newprice}}</view>
+      </view>
+    </view>
+  </view>
+</view>
