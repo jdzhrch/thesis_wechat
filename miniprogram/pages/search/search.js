@@ -1,11 +1,54 @@
 // miniprogram/pages/search/search.js
+const app = getApp()
 Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    openid: '',
+    events: [{
+        eventId: 11,
+        name: '寒门状元之死',
+        url: 'bill',
+        reportTime: "2019.12.30",
+        catNum: "1",
+      },
+      {
+        eventId: 12,
+        name: '美国CLINIQUE倩碧黄油无油/特效润肤露125ml',
+        url: 'bill',
+        reportTime: "2019.3.30",
+        catNum: "4",
+      },
+    ],
+    isHideLoadMore: false
+  },
+  showInput: function() {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function() {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function() {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function(e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
-  },
+  onLoad: function(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -18,7 +61,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
   },
 
   /**
@@ -56,48 +103,30 @@ Page({
 
   },
 
-  /**
-   * 页面的初始数据
+  /*
+   * util文件夹里面有network工具可以看下能否直接使用
    */
-  data: {
-    inputShowed: false,
-    inputVal: "",
-    recommends: [{
-        goodId: 11,
-        name: 'Lancome/兰蔻清莹柔肤爽肤水/粉水400ml补水保湿玫瑰水化妆水',
-        url: 'bill',
-        newprice: "￥30.00",
-        oldprice: "￥80.00",
+  getHistory: function() {
+    wx.request({
+      url: 'https://your-domain/getHistory',
+      method: 'GET',
+      data: {
+        openid: app.globalData.openid
       },
-      {
-        goodId: 12,
-        name: '美国CLINIQUE倩碧黄油无油/特效润肤露125ml',
-        url: 'bill',
-        newprice: "￥239.00",
-        oldprice: "￥320.00",
+      header: {
+        'Content-Type': 'application/json'
       },
-    ],
-    isHideLoadMore: false
+      success: function(res) {
+        //返回结果是js数组
+        //events = res是否可行
+        for (var i = 0; i < res.length; i++) {
+          console.log(res[i]);
+          this.setData({
+            //todo
+          })
+        }
+      }
+    })
+
   },
-  showInput: function() {
-    this.setData({
-      inputShowed: true
-    });
-  },
-  hideInput: function() {
-    this.setData({
-      inputVal: "",
-      inputShowed: false
-    });
-  },
-  clearInput: function() {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  }
 })

@@ -1,15 +1,9 @@
 {
   "pages": [
     "pages/search/search",
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
     "pages/my/my",
-    "pages/news/news"
+    "pages/news/news",
+    "pages/report/report"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

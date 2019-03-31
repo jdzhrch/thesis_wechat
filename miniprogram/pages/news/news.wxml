@@ -1,10 +1,16 @@
 <!--miniprogram/pages/news/news.wxml-->
-<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
-  <view wx:for="{{recommends}}" wx:key="unique" style="display: block;">
-    <view class="card">
-      <view bindtap="onItemClick">
-        <text class="title">{{item.name}}</text>
-        <view class="title">{{item.newprice}}</view>
+<view class="page">
+  <view class="page__bd">
+    <view class="history-header">
+      <text style="position: relative;left: 30rpx;">热门</text>
+      <text style="position: relative;left: 360rpx;">报告时间</text>
+      <text style="position: relative;left: 430rpx;">类别数</text>
+    </view>
+    <view wx:for="{{events}}" wx:key="unique" style="display: block;">
+      <view class="card" bindtap="onItemClick">
+          <text style="width:380rpx;">{{item.name}}</text>
+          <text style="text-align: center;width:160rpx;">{{item.reportTime}}</text>
+          <text style="text-align: right;width:100rpx;">{{item.catNum}}</text>
       </view>
     </view>
   </view>

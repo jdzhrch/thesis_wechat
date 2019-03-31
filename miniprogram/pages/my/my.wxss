@@ -5,6 +5,7 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: center;
 }
 
 .userinfo {
@@ -29,10 +30,5 @@ page {
 }
 
 .userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 600rpx;
   color: #aaa;
 }

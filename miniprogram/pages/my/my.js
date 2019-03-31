@@ -1,4 +1,5 @@
 // miniprogram/pages/my/my.js
+const app = getApp()
 Page({
 
   /**
@@ -22,11 +23,11 @@ Page({
       })
       return
     }
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
+          console.log(res.authSetting)
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
@@ -40,7 +41,16 @@ Page({
       }
     })
   },
-
+  /**
+     * 生命周期函数--监听页面显示
+     */
+  onShow: function () {
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
+  },
   onGetUserInfo: function(e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
@@ -49,26 +59,5 @@ Page({
         userInfo: e.detail.userInfo
       })
     }
-  },
-
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
-    })
   }
 })

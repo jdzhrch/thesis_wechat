@@ -1,11 +1,11 @@
 <!--miniprogram/pages/my/my.wxml-->
 <!--index.wxml-->
-<view class="container">
-  <view bindtap="bindViewTap" class="userinfo">
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})" background-size="cover"></button>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">登录后同步历史记录</text>
+<view class="page">
+  <view class="page__bd">
+      <view class="userinfo">
+        <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})" background-size="cover"></button>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+        <text wx:if="{{!openid}}" style="margin-top: 600rpx}}" class="user-motto" style="margin-top: 600rpx;color: #aaa;">登录后同步搜索历史</text>
   </view>
 </view>

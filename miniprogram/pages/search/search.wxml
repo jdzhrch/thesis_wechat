@@ -24,15 +24,20 @@
         </view>
       </navigator>
     </view>
-    <view class="history-header">
-      <text>最近查询</text>
-      <text>报告时间</text>
+    <view wx:if="{{!openid}}" style="text-align:center">
+      <text style="margin-top: 600rpx" class="user-motto" style="margin-top: 600rpx;color: #aaa;">登录后同步搜索历史</text>
     </view>
-    <view wx:for="{{recommends}}" wx:key="unique" style="display: block;">
-      <view class="card">
-        <view bindtap="onItemClick">
-          <text class="title">{{item.name}}</text>
-          <view class="title">{{item.newprice}}</view>
+    <view wx:else>
+      <view class="history-header">
+        <text style="position: relative;left: 30rpx;">最近查询</text>
+        <text style="position: relative;left: 305rpx;">报告时间</text>
+        <text style="position: relative;left: 380rpx;">类别数</text>
+      </view>
+      <view wx:for="{{events}}" wx:key="unique" style="display: block;">
+        <view class="card" bindtap="onItemClick">
+          <text style="width:380rpx;">{{item.name}}</text>
+          <text style="text-align: center;width:160rpx;">{{item.reportTime}}</text>
+          <text style="text-align: right;width:100rpx;">{{item.catNum}}</text>
         </view>
       </view>
     </view>
