@@ -87,7 +87,7 @@ Page({
     var eventInfo = e.currentTarget.dataset;
     console.log(eventInfo);
     wx.navigateTo({
-      url: '../report/report?eventid=' + eventInfo.eventid + '&eventname=' + eventInfo.name + '&reporttime=' + eventInfo.reporttime //传参跳转即可
+      url: '../report/report?eventid=' + eventInfo.eventid + '&eventname=' + eventInfo.eventname + '&reporttime=' + eventInfo.reporttime //传参跳转即可
     })
   }
 })
