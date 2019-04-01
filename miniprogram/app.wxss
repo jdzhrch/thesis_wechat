@@ -14,8 +14,10 @@
   background-color: #fff;
   box-shadow: 1px 1px 1px #ccc;
   margin: 8px;
-  padding-left: 8rpx;
-  padding-right: 8rpx;
+  padding-left: 22rpx;
+  padding-right: 22rpx;
+  padding-top: 14rpx;
+  padding-bottom: 14rpx;
   font-size: 14px;
   display: flex;
   flex-direction:row;

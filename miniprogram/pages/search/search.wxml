@@ -1,9 +1,9 @@
 <!--miniprogram/pages/search/search.wxml-->
 <view class="page">
   <view class="page__bd">
-    <view class="weui-search-bar">
-      <view class="weui-search-bar__form">
-        <view class="weui-search-bar__box">
+    <view class="weui-search-bar" style="background-color: #f6f6f6;">
+      <view class="weui-search-bar__form" >
+        <view class="weui-search-bar__box" >
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
           <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
           <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
@@ -35,7 +35,7 @@
       </view>
       <view wx:for="{{events}}" wx:key="unique" style="display: block;">
         <view class="card" bindtap="openReport" data-eventid="{{item.eventId}}" data-eventname="{{item.name}}" data-reporttime="{{item.reportTime}}">
-          <text style="width:380rpx;">{{item.name}}</text>
+          <text style="width:365rpx;">{{item.name}}</text>
           <text style="text-align: center;width:160rpx;">{{item.reportTime}}</text>
           <text style="text-align: right;width:100rpx;">{{item.catNum}}</text>
         </view>

@@ -1,0 +1,11 @@
+<!--miniprogram/pages/category/cateogry.wxml-->
+<view class="history-header">
+  <text style="position: relative;left: 30rpx;">最近查询</text>
+  <text style="position: relative;left: 420rpx;">阅读量</text>
+</view>
+<view wx:for="{{articles}}" wx:key="unique" style="display: block;">
+  <view class="card" bindtap="openReport" data-url="{{item.url}}">
+    <text style="width:475rpx;">{{item.title}}</text>
+    <text style="text-align: right;width:100rpx;">{{item.pv}}</text>
+  </view>
+</view>

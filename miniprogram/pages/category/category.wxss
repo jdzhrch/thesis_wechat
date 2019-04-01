@@ -1,3 +1,4 @@
+/* miniprogram/pages/category/cateogry.wxss */
 /* miniprogram/pages/search/search.wxss */
 .weui-cell {
   padding: 12px 15px 12px 35px;

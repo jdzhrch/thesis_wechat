@@ -3,7 +3,8 @@
     "pages/search/search",
     "pages/my/my",
     "pages/news/news",
-    "pages/report/report"
+    "pages/report/report",
+    "pages/category/category"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

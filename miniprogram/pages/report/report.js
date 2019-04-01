@@ -75,23 +75,23 @@ Page({
       backgroundColor: "#ffffff",
       series: [{
 
-        name: '访问来源',
+        name: "饼图",
         type: 'pie',
         radius: '55%',
         data: [{
+            catid: 1,
             value: 235,
-            name: '视频广告的点点滴滴多多多多多多多多多多多多多多多多多多多多多',
-            url: "www.text"
+            name: '悼念\n实事'
           },
           {
+            catid: 2,
             value: 274,
-            name: '联盟广告',
-            url: "www.text"
+            name: '联盟广告'
           },
           {
+            catid: 3,
             value: 310,
-            name: '邮件营销少时诵诗书所所所所所所所所所所所所所所所',
-            url: "www.text"
+            name: '邮件营销'
           }
         ],
         roseType: 'angle',
@@ -127,8 +127,13 @@ Page({
     })*/
     console.log(option.series[0].data)
     chart.setOption(option);
+    //点击扇区跳转
+    var eventid = this.data.eventid;
     chart.on('click', function(param) {
       console.log(param);
+      wx.navigateTo({
+        url: '../category/category?eventid=' + eventid + '&catid=' + param.data.catid
+      })
     });
   }
 });
