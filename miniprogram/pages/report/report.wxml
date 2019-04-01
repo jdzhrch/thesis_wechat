@@ -1,2 +1,8 @@
-<!--miniprogram/pages/report/report.wxml-->
-<text>miniprogram/pages/report/report.wxml</text>
+<!--index.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="container-pie">
+      <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+</view>
