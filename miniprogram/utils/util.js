@@ -74,3 +74,32 @@ module.exports = {
   getPswId,getPswId,
   tokenAndKo,tokenAndKo,
 }
+
+const Promise = require('./Promise')
+
+const REGX_HTML_DECODE = /&\w{1,};|&#\d{1,};/g;
+const HTML_DECODE = {
+  "&lt;": "<",
+  "&gt;": ">",
+  "&amp;": "&",
+  "&nbsp;": " ",
+  "&quot;": "\"",
+  "&copy;": "©"
+};
+
+
+function login() {
+  return new Promise((resolve, reject) => wx.login({
+    success: resolve,
+    fail: reject
+  }))
+}
+
+function getUserInfo() {
+  return login().then(res => new Promise((resolve, reject) =>
+    wx.getUserInfo({
+      success: resolve,
+      fail: reject
+    })
+  ))
+}
