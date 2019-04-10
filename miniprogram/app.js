@@ -12,20 +12,9 @@ App({
     }
 
     this.globalData = {
+      urldomain : 'http://127.0.0.1:8000/multiDimEvents/'
     }
 /*
-    // 登录
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        this.globalData.openid = res.result.openid
-        console.log('[云函数] [login] user openid: ', this.globalData.openid)
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -41,5 +30,28 @@ App({
         }
       }
     })*/
-  }
+  },
+  getOpenid: function () {
+    var that = this;
+    return new Promise(function (resolve, reject) {
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          that.globalData.openid = res.result.openid
+          console.log("openid:", that.globalData.openid)
+          //存储openidvar 
+          res = {
+            status: 200,
+          }
+          resolve(res);
+        },
+        fail: err => {
+            reject('error');
+        }
+      })
+    });
+  }, 
 })
+  
+

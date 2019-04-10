@@ -34,10 +34,10 @@
         <text style="position: relative;left: 380rpx;">类别数</text>
       </view>
       <view wx:for="{{events}}" wx:key="unique" style="display: block;">
-        <view class="card" bindtap="openReport" data-eventid="{{item.eventId}}" data-eventname="{{item.name}}" data-reporttime="{{item.reportTime}}">
-          <text style="width:365rpx;">{{item.name}}</text>
+        <view class="card" bindtap="openReport" data-eventid="{{item.eventId}}" data-eventname="{{item.eventName}}" data-reporttime="{{item.reportTime}}">
+          <text style="width:365rpx;">{{item.eventName}}</text>
           <text style="text-align: center;width:160rpx;">{{item.reportTime}}</text>
-          <text style="text-align: right;width:100rpx;">{{item.catNum}}</text>
+          <text style="text-align: right;width:100rpx;">{{item.categoryNum}}</text>
         </view>
       </view>
     <!--</view>-->

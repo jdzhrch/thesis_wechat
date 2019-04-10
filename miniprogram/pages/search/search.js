@@ -52,46 +52,49 @@ Page({
   /*
    * util文件夹里面有network工具可以看下能否直接使用
    */
-  getHistory: function () {
+  getHistory: function() {},
+  onLoad: function() {
+    var that = this;
+    app.getOpenid().then(function(res) {
+      if (res.status == 200) {
+        that.setData({
+          openid: app.globalData.openid
+        })
+        wx.request({
+          url: app.globalData.urldomain+'getHistory',
+          method: 'GET',
+          data: {
+            openid: app.globalData.openid
+          },
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function(res) {
+            //返回结果是js数组
+            that.setData({
+              events: res.data
+            })
+            console.log(that.data.events)
+          }
+        })
+      } else {
+        console.log(res.data);
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (app.globalData.openid) {
-      this.setData({
-        openid: app.globalData.openid
-      })
-    };
-    var that = this;
-    wx.request({
-      url: 'http://127.0.0.1:8000/multiDimEvents/getHistory',
-      method: 'GET',
-      data: {
-        openid: app.globalData.openid
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        //返回结果是js数组
-        //that.setData({ events = res})
-        console.log(that.data.events)
-        /*for (var i = 0; i < res.length; i++) {
-          console.log(res[i]);
-          this.setData({
-            //todo
-          })
-        }*/
-      }
-    })
+    console.log("onshow在onload之前");
+
   },
 
-  successtest: function (res) {
+  successtest: function(res) {
     console.log(res)
   },
 
-  openReport: function(e){
+  openReport: function(e) {
     var eventInfo = e.currentTarget.dataset;
     console.log(eventInfo);
     wx.navigateTo({
