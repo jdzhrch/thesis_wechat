@@ -13,7 +13,7 @@ App({
 
     this.globalData = {
     }
-
+/*
     // 登录
     wx.cloud.callFunction({
       name: 'login',
@@ -40,6 +40,6 @@ App({
           })
         }
       }
-    })
+    })*/
   }
 })

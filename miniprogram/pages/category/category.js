@@ -27,7 +27,6 @@ Page({
       url: 'https://your-domain/getCat',
       method: 'GET',
       data: {
-        eventid: this.data.eventid
         catid: this.data.catid
       },
       header: {

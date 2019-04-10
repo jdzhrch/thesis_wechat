@@ -1,3 +1,4 @@
+import util from '../../utils/network_util.js';
 // miniprogram/pages/search/search.js
 const app = getApp()
 Page({
@@ -12,14 +13,16 @@ Page({
         name: '寒门状元之死',
         url: 'bill',
         reportTime: "2019.12.30",
-        catNum: "1",
+        catNum: 1,
+        reportVer: 1
       },
       {
         eventId: 12,
         name: '美国CLINIQUE倩碧黄油无油/特效润肤露125ml',
         url: 'bill',
         reportTime: "2019.3.30",
-        catNum: "4",
+        catNum: 4,
+        reportVer: 1,
       },
     ],
     isHideLoadMore: false
@@ -46,6 +49,11 @@ Page({
     });
   },
 
+  /*
+   * util文件夹里面有network工具可以看下能否直接使用
+   */
+  getHistory: function () {
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -54,15 +62,10 @@ Page({
       this.setData({
         openid: app.globalData.openid
       })
-    }
-  },
-
-  /*
-   * util文件夹里面有network工具可以看下能否直接使用
-   */
-  getHistory: function() {
+    };
+    var that = this;
     wx.request({
-      url: 'https://your-domain/getHistory',
+      url: 'http://127.0.0.1:8000/multiDimEvents/getHistory',
       method: 'GET',
       data: {
         openid: app.globalData.openid
@@ -70,24 +73,29 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function(res) {
+      success: function (res) {
         //返回结果是js数组
-        //events = res是否可行
-        for (var i = 0; i < res.length; i++) {
+        //that.setData({ events = res})
+        console.log(that.data.events)
+        /*for (var i = 0; i < res.length; i++) {
           console.log(res[i]);
           this.setData({
             //todo
           })
-        }
+        }*/
       }
     })
+  },
+
+  successtest: function (res) {
+    console.log(res)
   },
 
   openReport: function(e){
     var eventInfo = e.currentTarget.dataset;
     console.log(eventInfo);
     wx.navigateTo({
-      url: '../report/report?eventid=' + eventInfo.eventid + '&eventname=' + eventInfo.eventname + '&reporttime=' + eventInfo.reporttime //传参跳转即可
+      url: '../report/report?eventid=' + eventInfo.eventid + '&eventname=' + eventInfo.eventname + '&reporttime=' + eventInfo.reporttime + '&reportVer=' + eventInfo.reportVer //传参跳转即可
     })
   }
 })

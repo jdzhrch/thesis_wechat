@@ -1,4 +1,3 @@
-import util from 'util.js';
 /**
  * url 请求地址
  * success 成功的回调

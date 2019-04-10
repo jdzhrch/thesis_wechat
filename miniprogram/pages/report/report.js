@@ -14,7 +14,8 @@ Page({
     this.setData({
       eventid: options.eventid,
       eventname: options.eventname,
-      reporttime: options.reporttime
+      reporttime: options.reporttime,
+      reportVer: options.reportVer
     })
     console.log(this.data);
   },
@@ -111,6 +112,7 @@ Page({
       method: 'GET',
       data: {
         eventid: this.data.eventid
+        reportVer: this.data.reportVer
       },
       header: {
         'Content-Type': 'application/json'
