@@ -37,6 +37,7 @@ Page({
         for (var i = 0; i < res.data.length; i++) {
           categoryid: res.data[i].id
           that.data.categories[i] = {
+            id: res.data[i].id,
             value: res.data[i].articleNum,
             name: res.data[i].featureList,
           }
@@ -130,10 +131,11 @@ Page({
     this.chart.setOption(option);
     //点击扇区跳转
     var eventid = this.data.eventid;
-    this.chart.on('click', function(param) {
+    this.chart.on('click', function (param) {
+      console.log("点击扇区");
       console.log(param);
       wx.navigateTo({
-        url: '../category/category?eventid=' + eventid + '&catid=' + param.data.catid
+        url: '../category/category?&categoryid=' + param.data.id
       })
     });
   }

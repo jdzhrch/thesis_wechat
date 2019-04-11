@@ -1,4 +1,5 @@
 // miniprogram/pages/category/cateogry.js
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -18,29 +19,28 @@ Page({
 
   onLoad: function(options) {
     this.setData({
-      eventid: options.eventid,
-      catid: options.catid
+      categoryid: options.categoryid
     })
     console.log(this.data);
     //获取分类数据
-    /*wx.request({
-      url: 'https://your-domain/getCat',
+    var that = this;
+    wx.request({
+      url: app.globalData.urldomain + 'getArticle',
       method: 'GET',
       data: {
-        catid: this.data.catid
+        categoryid: options.categoryid
       },
       header: {
         'Content-Type': 'application/json'
       },
-      success: function(res) {
+      success: function (res) {
         //返回结果是js数组
-        //events = res是否可行
-        for (var i = 0; i < res.length; i++) {
-          console.log(res[i]);
-          //todo
-        }
+        that.setData({
+          articles: res.data
+        });
+        console.log(that.data);
       }
-    })*/
+    })
   },
   openArticle: function(e){
     wx.setClipboardData({

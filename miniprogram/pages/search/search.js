@@ -1,5 +1,5 @@
-import util from '../../utils/network_util.js';
 // miniprogram/pages/search/search.js
+import util from '../../utils/network_util.js';
 const app = getApp()
 Page({
 
