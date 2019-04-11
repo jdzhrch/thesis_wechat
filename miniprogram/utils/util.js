@@ -71,11 +71,12 @@ module.exports = {
   getToken:getToken,
   getKo:getKo,
   getTime:getTime,
-  getPswId,getPswId,
-  tokenAndKo,tokenAndKo,
+  getPswId:getPswId,
+  tokenAndKo: tokenAndKo,
+  sleep: sleep,
+  getAttribute: getAttribute,
 }
 
-const Promise = require('./Promise')
 
 const REGX_HTML_DECODE = /&\w{1,};|&#\d{1,};/g;
 const HTML_DECODE = {
@@ -102,4 +103,19 @@ function getUserInfo() {
       fail: reject
     })
   ))
+}
+
+function sleep(delay) {
+  var start = (new Date()).getTime();
+  while ((new Date()).getTime() - start < delay) {
+    continue;
+  }
+}
+
+function getAttribute(dictList,key){
+  var result = new Array();
+  for(var i = 0;i< len(dictList);i++){
+    result[i] = dictList[i].key;
+  }
+  return result;
 }

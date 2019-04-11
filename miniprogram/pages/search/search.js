@@ -8,22 +8,7 @@ Page({
    */
   data: {
     openid: '',
-    events: [{
-        eventId: 11,
-        name: '寒门状元之死',
-        url: 'bill',
-        reportTime: "2019.12.30",
-        catNum: 1,
-        reportVer: 1
-      },
-      {
-        eventId: 12,
-        name: '美国CLINIQUE倩碧黄油无油/特效润肤露125ml',
-        url: 'bill',
-        reportTime: "2019.3.30",
-        catNum: 4,
-        reportVer: 1,
-      },
+    events: [
     ],
     isHideLoadMore: false
   },
@@ -49,10 +34,6 @@ Page({
     });
   },
 
-  /*
-   * util文件夹里面有network工具可以看下能否直接使用
-   */
-  getHistory: function() {},
   onLoad: function() {
     var that = this;
     app.getOpenid().then(function(res) {
@@ -74,6 +55,7 @@ Page({
             that.setData({
               events: res.data
             })
+            console.log("request请求返回结果：")
             console.log(that.data.events)
           }
         })
@@ -96,9 +78,10 @@ Page({
 
   openReport: function(e) {
     var eventInfo = e.currentTarget.dataset;
+    console.log("打开report页前的数据：")
     console.log(eventInfo);
     wx.navigateTo({
-      url: '../report/report?eventid=' + eventInfo.eventid + '&eventname=' + eventInfo.eventname + '&reporttime=' + eventInfo.reporttime + '&reportVer=' + eventInfo.reportVer //传参跳转即可
+      url: '../report/report?eventid=' + eventInfo.id + '&eventname=' + eventInfo.eventname + '&reporttime=' + eventInfo.reporttime + '&reportver=' + eventInfo.reportver //传参跳转即可
     })
   }
 })
