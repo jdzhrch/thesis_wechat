@@ -32,6 +32,25 @@ Page({
     this.setData({
       inputVal: e.detail.value
     });
+    var that = this;
+    wx.request({
+      url: app.globalData.urldomain + 'searchEvent',
+      method: 'GET',
+      data: {
+        searchkeyword: e.detail.value
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        //返回结果是js数组
+        that.setData({
+          searchresults: res.data
+        })
+        console.log("search返回结果：")
+        console.log(that.data.searchresults)
+      }
+    })
   },
 
   onLoad: function() {

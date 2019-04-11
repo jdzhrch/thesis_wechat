@@ -2,8 +2,8 @@
 <view class="page">
   <view class="page__bd">
     <view class="weui-search-bar" style="background-color: #f6f6f6;">
-      <view class="weui-search-bar__form" >
-        <view class="weui-search-bar__box" >
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
           <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
           <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
@@ -18,28 +18,30 @@
       <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>
     <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-      <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">
-          <view>实时搜索文本</view>
-        </view>
-      </navigator>
+      <view wx:for="{{searchresults}}" wx:key="unique" style="display: block;">
+        <navigator url="../report/report?eventid={{item.id}}&eventname={{item.eventName}}&reporttime={{item.reportTime}}&reportver={{item.reportVer}}" class="weui-cell" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">
+            <view>{{item.eventName}}</view>
+          </view>
+        </navigator>
+      </view>
     </view>
     <!--<view wx:if="{{!openid}}" style="text-align:center">
       <text style="margin-top: 600rpx" class="user-motto" style="margin-top: 600rpx;color: #aaa;">登录后同步搜索历史</text>
     </view>
     <view wx:else>-->
-      <view class="history-header">
-        <text style="position: relative;left: 30rpx;">最近查询</text>
-        <text style="position: relative;left: 305rpx;">报告时间</text>
-        <text style="position: relative;left: 380rpx;">类别数</text>
+    <view class="history-header">
+      <text style="position: relative;left: 30rpx;">最近查询</text>
+      <text style="position: relative;left: 305rpx;">报告时间</text>
+      <text style="position: relative;left: 380rpx;">类别数</text>
+    </view>
+    <view wx:for="{{events}}" wx:key="unique" style="display: block;">
+      <view class="card" bindtap="openReport" data-id="{{item.id}}" data-eventname="{{item.eventName}}" data-reporttime="{{item.reportTime}}" data-reportver="{{item.reportVer}}">
+        <text style="width:365rpx;">{{item.eventName}}</text>
+        <text style="text-align: center;width:160rpx;">{{item.reportTime}}</text>
+        <text style="text-align: right;width:100rpx;">{{item.categoryNum}}</text>
       </view>
-      <view wx:for="{{events}}" wx:key="unique" style="display: block;">
-        <view class="card" bindtap="openReport" data-id="{{item.id}}" data-eventname="{{item.eventName}}" data-reporttime="{{item.reportTime}}" data-reportver="{{item.reportVer}}">
-          <text style="width:365rpx;">{{item.eventName}}</text>
-          <text style="text-align: center;width:160rpx;">{{item.reportTime}}</text>
-          <text style="text-align: right;width:100rpx;">{{item.categoryNum}}</text>
-        </view>
-      </view>
+    </view>
     <!--</view>-->
   </view>
 </view>

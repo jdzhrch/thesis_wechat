@@ -11,7 +11,12 @@ Page({
       fail: function() {}
     }
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
+    console.log("onready");
+    console.log(this.data);
+    // 获取组件
+    this.ecComponent = this.selectComponent('#mychart-dom-bar');
+    this.test();
     this.setData({
       eventid: options.eventid,
       eventname: options.eventname,
@@ -48,14 +53,6 @@ Page({
       }
     })
   },
-  onReady: function() {
-    console.log("onready");
-    console.log(this.data);
-    // 获取组件
-    this.ecComponent = this.selectComponent('#mychart-dom-bar');
-    this.test();
-
-  },
   test: function() {
     this.ecComponent.init((canvas, width, height) => {
       // 获取组件的 canvas、width、height 后的回调函数
@@ -64,7 +61,6 @@ Page({
         width: width,
         height: height
       });
-
       // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
       this.chart = chart;
 
