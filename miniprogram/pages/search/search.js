@@ -8,8 +8,7 @@ Page({
    */
   data: {
     openid: '',
-    events: [
-    ],
+    events: [],
     isHideLoadMore: false
   },
   showInput: function() {
@@ -28,6 +27,10 @@ Page({
       inputVal: ""
     });
   },
+
+  /*
+   * 在搜索框输入文本时触发
+   */
   inputTyping: function(e) {
     this.setData({
       inputVal: e.detail.value
@@ -42,7 +45,7 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         //返回结果是js数组
         that.setData({
           searchresults: res.data
@@ -53,6 +56,14 @@ Page({
     })
   },
 
+  inputConfirm: function(e) {
+    if (e.detail.value) {
+      wx.navigateTo({
+        url: '../apply/apply?&eventname=' + e.detail.value //传参跳转即可
+      })
+    }
+  },
+
   onLoad: function() {
     var that = this;
     app.getOpenid().then(function(res) {
@@ -61,7 +72,7 @@ Page({
           openid: app.globalData.openid
         })
         wx.request({
-          url: app.globalData.urldomain+'getHistory',
+          url: app.globalData.urldomain + 'processHistory',
           method: 'GET',
           data: {
             openid: app.globalData.openid
@@ -91,16 +102,32 @@ Page({
 
   },
 
-  successtest: function(res) {
-    console.log(res)
-  },
-
   openReport: function(e) {
     var eventInfo = e.currentTarget.dataset;
     console.log("打开report页前的数据：")
     console.log(eventInfo);
     wx.navigateTo({
       url: '../report/report?eventid=' + eventInfo.id + '&eventname=' + eventInfo.eventname + '&reporttime=' + eventInfo.reporttime + '&reportver=' + eventInfo.reportver //传参跳转即可
+    })
+  },
+
+  addHistory: function(e) {
+    console.log("addhistory:")
+    console.log(e.currentTarget.dataset)
+    wx.request({
+      url: app.globalData.urldomain + 'processHistory/',
+      method: 'POST',
+      data: {
+        eventid: e.currentTarget.dataset.id,
+        openid: app.globalData.openid
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function(res) {
+        console.log("posthistory请求返回结果：")
+        console.log(res.data)
+      }
     })
   }
 })

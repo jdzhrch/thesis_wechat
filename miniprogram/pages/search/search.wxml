@@ -5,7 +5,7 @@
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="inputConfirm" confirm-type="search"/>
           <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
             <icon type="clear" size="14"></icon>
           </view>
@@ -19,7 +19,7 @@
     </view>
     <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
       <view wx:for="{{searchresults}}" wx:key="unique" style="display: block;">
-        <navigator url="../report/report?eventid={{item.id}}&eventname={{item.eventName}}&reporttime={{item.reportTime}}&reportver={{item.reportVer}}" class="weui-cell" hover-class="weui-cell_active">
+        <navigator url="../report/report?eventid={{item.id}}&eventname={{item.eventName}}&reporttime={{item.reportTime}}&reportver={{item.reportVer}}" class="weui-cell" hover-class="weui-cell_active" bindtap="addHistory" data-id="{{item.id}}">
           <view class="weui-cell__bd">
             <view>{{item.eventName}}</view>
           </view>

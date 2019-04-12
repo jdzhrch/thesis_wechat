@@ -5,7 +5,7 @@
     "pages/news/news",
     "pages/report/report",
     "pages/category/category",
-    "pages/article/article"
+    "pages/apply/apply"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -6,6 +6,6 @@
         <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})" background-size="cover"></button>
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       </view>
-        <text wx:if="{{!openid}}" style="margin-top: 600rpx}}" class="user-motto" style="margin-top: 600rpx;color: #aaa;">登录后同步搜索历史</text>
+        <text wx:if="{{!openid}}" class="user-motto" style="margin-top: 600rpx;color: #aaa;">登录后同步搜索历史</text>
   </view>
 </view>

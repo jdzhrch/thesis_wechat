@@ -1,0 +1,9 @@
+<!--miniprogram/pages/apply/apply.wxml-->
+<view class="page">
+  <view class="page__bd">
+      <view class="info">
+        <text style="margin-top: 600rpx;color: #aaa;">您搜索的事件 {{eventname}} 暂未生成报告</text>
+        <button  bindtap='apply' background-size="cover" sylte="width: 350rpx;margin-top: 300rpx;">申请事件报告</button>
+      </view>
+  </view>
+</view>
