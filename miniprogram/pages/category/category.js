@@ -19,7 +19,8 @@ Page({
 
   onLoad: function(options) {
     this.setData({
-      categoryid: options.categoryid
+      categoryid: options.categoryid,
+      featurelist: options.featurelist
     })
     console.log(this.data);
     //获取分类数据

@@ -45,7 +45,11 @@ Page({
     events: [],
     isHideLoadMore: false
   },
-  onLoad: function() {
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    console.log("onshow在onload之前");
     var that = this;
     that.setData({
       openid: app.globalData.openid
@@ -58,7 +62,7 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function(res) {
+      success: function (res) {
         //返回结果是js数组
         that.setData({
           events: res.data
@@ -67,13 +71,6 @@ Page({
         console.log(that.data.events)
       }
     })
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    console.log("onshow在onload之前");
-
   },
 
   successtest: function(res) {

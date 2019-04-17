@@ -57,16 +57,28 @@ Page({
   },
 
   inputConfirm: function(e) {
-    if (e.detail.value) {
-      wx.navigateTo({
-        url: '../apply/apply?&eventname=' + e.detail.value //传参跳转即可
+    if (this.data.searchresults.length == 0) {
+      //只有在输入框有数据，且searchresults还未有数据时才会跳转
+      if (e.detail.value) {
+        wx.navigateTo({
+          url: '../apply/apply?&eventname=' + e.detail.value //传参跳转即可
+        })
+      }
+    } else{
+      wx.showToast({
+        title: '请使用已匹配到的结果',
+        icon: 'none',
+        duration: 2000
       })
     }
   },
 
-  onLoad: function() {
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     var that = this;
-    app.getOpenid().then(function(res) {
+    app.getOpenid().then(function (res) {
       if (res.status == 200) {
         that.setData({
           openid: app.globalData.openid
@@ -80,7 +92,7 @@ Page({
           header: {
             'Content-Type': 'application/json'
           },
-          success: function(res) {
+          success: function (res) {
             //返回结果是js数组
             that.setData({
               events: res.data
@@ -93,13 +105,6 @@ Page({
         console.log(res.data);
       }
     });
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    console.log("onshow在onload之前");
-
   },
 
   openReport: function(e) {

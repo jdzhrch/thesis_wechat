@@ -1,5 +1,9 @@
 <!--miniprogram/pages/category/cateogry.wxml-->
-<view class="history-header">
+<view class="categoryTitle">
+  <text>{{featurelist}}</text>
+</view>
+<view class="divLine"></view>
+<view class="category-header">
   <text style="position: relative;left: 30rpx;">最近查询</text>
   <text style="position: relative;left: 420rpx;">阅读量</text>
 </view>

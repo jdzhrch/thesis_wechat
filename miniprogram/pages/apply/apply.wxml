@@ -3,7 +3,8 @@
   <view class="page__bd">
       <view class="info">
         <text style="margin-top: 600rpx;color: #aaa;">您搜索的事件 {{eventname}} 暂未生成报告</text>
-        <button  bindtap='apply' background-size="cover" sylte="width: 350rpx;margin-top: 300rpx;">申请事件报告</button>
+        <button wx:if="{{!ifapplied}}" bindtap='apply' background-size="cover" sylte="width: 350rpx;margin-top: 300rpx;">申请事件报告</button>
+        <text wx:if="{{ifapplied}}" style="color: #aaa;">请返回搜索框搜索事件</text>
       </view>
   </view>
 </view>

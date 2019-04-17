@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    ifapplied: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       eventname: options.eventname
     })
@@ -21,7 +21,10 @@ Page({
   /*
    * 申请事件报告
    */
-  apply: function(){
+  apply: function() {
+    this.setData({
+      ifapplied: true
+    })
     //获取分类数据
     var that = this;
     wx.request({
@@ -33,7 +36,7 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data);
       }
     })

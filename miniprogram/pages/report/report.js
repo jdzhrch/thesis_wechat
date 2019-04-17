@@ -131,7 +131,7 @@ Page({
       console.log("点击扇区");
       console.log(param);
       wx.navigateTo({
-        url: '../category/category?&categoryid=' + param.data.id
+        url: '../category/category?categoryid=' + param.data.id + '&featurelist=' + param.data.name
       })
     });
   }
