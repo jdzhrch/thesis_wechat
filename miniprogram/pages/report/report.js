@@ -112,7 +112,7 @@ Page({
         type: 'pie',
         radius: '55%',
         data: this.data.categories,
-        roseType: 'angle',
+        //roseType: 'angle',
         itemStyle: {
           normal: {
             shadowBlur: 10,
