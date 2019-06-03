@@ -10,6 +10,6 @@
 <view wx:for="{{articles}}" wx:key="unique" style="display: block;">
   <view class="card" bindtap="openArticle" data-url="{{item.url}}">
     <text style="width:475rpx;">{{item.title}}</text>
-    <text style="text-align: right;width:200rpx;">{{item.published}}</text>
+    <text style="text-align: right;width:220rpx;">{{item.published}}</text>
   </view>
 </view>

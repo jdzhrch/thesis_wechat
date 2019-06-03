@@ -12,6 +12,8 @@
 	"appid": "wx8d5547db4ba0fbd7",
 	"projectname": "thesis_wechat",
 	"libVersion": "2.2.5",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
